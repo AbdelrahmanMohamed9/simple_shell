@@ -189,7 +189,7 @@ void _eputs(char *);
 /* get_line.c */
 void sigintHandler(int);
 int _getline(info_t *, char **, size_t *);
-void clear_info(info_t *);
+ssize_t get_input(info_t *);
 
 
 /* list_s.c */
