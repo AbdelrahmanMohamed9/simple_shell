@@ -79,24 +79,24 @@ typedef struct liststr
 
 typedef struct passinfo
 {
-	unsigned int line_count;
-	int err_num;
-	int linecount_flag;
-	char **environ;
 	char *arg;
 	char **argv;
 	char *path;
 	int argc;
+	unsigned int line_count;
+	int err_num;
+	int linecount_flag;
+	char *fname;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
+	char **environ;
 	int env_changed;
 	int status;
 	char **cmd_buf;
 	int cmd_buf_type;
 	int readfd;
 	int histcount;
-	char *fname;
-	list_t *env;
-	list_t *alias;
-	list_t *history;
 
 } info_t;
 
@@ -114,9 +114,9 @@ typedef struct passinfo
  */
 typedef struct builtin
 {
-	int (*func)(info_t *);
 	char *type;
-} builtin_table;
+	int (*func)(info_t *);
+} builtin_t;
 
 
 
