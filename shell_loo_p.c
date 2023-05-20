@@ -55,10 +55,8 @@ void fork_cmd(info_t *inf)
 
 int find_builtin(info_t *inf)
 {
-	int i, ret;
+	int i, ret = -1;
 
-	i = 0;
-	ret = -1;
 	builtin_t builtin[] = {
 		{"setenv", _mysetenv},
 		{"unsetenv", _myunsetenv},
@@ -71,6 +69,7 @@ int find_builtin(info_t *inf)
 		{NULL, NULL}
 	};
 
+	i = 0;
 	while (builtin[i].type)
 	{
 		if (_strcmp(inf->argv[0], builtin[i].type) == 0)

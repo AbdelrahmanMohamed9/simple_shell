@@ -35,7 +35,7 @@ char **list_to_strings(list_t *h)
 		str[i] = s;
 		i++;
 	}
-	str[i] == NULL;
+	str[i] = NULL;
 	return (str);
 }
 
