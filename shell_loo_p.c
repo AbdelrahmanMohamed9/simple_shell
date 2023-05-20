@@ -59,7 +59,7 @@ int find_builtin(info_t *inf)
 
 	i = 0;
 	ret = -1;
-	builtin_table builtin[] = {
+	builtin_t builtin[] = {
 		{"setenv", _mysetenv},
 		{"unsetenv", _myunsetenv},
 		{"cd", _mycd},
