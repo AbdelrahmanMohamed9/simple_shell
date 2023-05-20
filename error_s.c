@@ -9,9 +9,11 @@
  */
 void _eputs(char *str)
 {
+	int n;
+
 	if (!str)
 		return;
-	for (int n = 0; str[n] != '\0'; n++)
+	for (n = 0; str[n] != '\0'; n++)
 	{
 		_eputchar(str[n]);
 	}

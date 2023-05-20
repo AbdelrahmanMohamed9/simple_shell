@@ -78,15 +78,17 @@ int _mysetenv(info_t *info)
  */
 int _myunsetenv(info_t *info)
 {
+	int n;
+
 	if (info->argc == 1)
 	{
 		_eputs("Deficient number of arguments .\n");
 		return (1);
 	}
-
-	for (int n = 1; n < info->argc; n++)
+	for (n = 1; n < info->argc; n++)
 	{
 	_unsetenv(info, info->argv[n]);
+
 	}
 
 	return (0);

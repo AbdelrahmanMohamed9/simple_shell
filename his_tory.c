@@ -80,7 +80,7 @@ int write_history(info_t *info)
 int read_history(info_t *info)
 {
 	int n = 0, end = 0, lc = 0;
-	ssize_t cc, rn, fz = 0;
+	ssize_t cc, rn;
 	struct stat sst;
 	char *buffer = NULL, *fn = get_history_file(info);
 

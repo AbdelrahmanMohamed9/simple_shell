@@ -66,11 +66,13 @@ void set_info(info_t *info, char **av)
  */
 void free_info(info_t *info, int all)
 {
+	int n;
+
 	ffree(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
 
-	for (int n = 0; all && n < 5; n++)
+	for (n = 0; all && n < 5; n++)
 	{
 		switch (n)
 		{
