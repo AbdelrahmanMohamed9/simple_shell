@@ -99,11 +99,8 @@ void free_info(info_t *info, int all)
 				if (info->readfd > 2)
 					close(info->readfd);
 				_putchar(BUF_FLUSH);
-
 				break;
-
 			default:
-
 				break;
 		}
 	}
