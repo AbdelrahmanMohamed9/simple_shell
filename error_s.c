@@ -29,6 +29,7 @@ void _eputs(char *str)
  */
 int _eputchar(char c)
 {
+	int ret;
 	static int n;
 	static char buffer[WRITE_BUF_SIZE];
 
@@ -36,7 +37,9 @@ int _eputchar(char c)
 	{
 		if (c == BUF_FLUSH || n >= WRITE_BUF_SIZE)
 		{
-			write(2, buffer, n);
+			ret = write(2, buffer, n);
+			if (ret == -1)
+				return (-1);
 			n = 0;
 			break;
 		}
@@ -61,6 +64,7 @@ int _eputchar(char c)
  */
 int _putfd(char c, int fd)
 {
+	ssize_t ret;
 	static int n;
 	static char buffer[WRITE_BUF_SIZE];
 
@@ -68,7 +72,9 @@ int _putfd(char c, int fd)
 	{
 		if (c == BUF_FLUSH || n >= WRITE_BUF_SIZE)
 		{
-			write(fd, buffer, n);
+			ret = write(fd, buffer, n);
+			if (ret == -1)
+				return (-1);
 			n = 0;
 			break;
 		}
@@ -91,13 +97,17 @@ int _putfd(char c, int fd)
  */
 int _putsfd(char *str, int fd)
 {
+	int ret;
 	int n;
 
 	if (!str)
 		return (0);
 	for (n = 0; *str; str++)
 	{
-		n += _putfd(*str, fd);
+		ret = _putfd(*str, fd);
+		if (ret == -1)
+			return (-1);
+		n += ret;
 	}
 	return (n);
 }

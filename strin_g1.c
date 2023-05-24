@@ -18,11 +18,16 @@ void _puts(char *str)
 /**
  * _putchar - function prints single character
  * @c: character to bassed as a parameter to be printed
- * Return: 0 on success
+ * Return: 1 on success, and -1 on error.
  */
 int _putchar(char c)
 {
-	write(1, &c, 1);
+	int ret;
+
+	ret = write(1, &c, 1);
+	if (ret == -1)
+		return (-1);
+
 	return (0);
 }
 
