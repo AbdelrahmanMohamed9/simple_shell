@@ -116,8 +116,8 @@ ssize_t read_buffer(info_t *info, char *buffer, size_t *i)
 /**
  * _getline - That reads A Next Line of Input From Standard Input Stream.
  * @info: structure containing parameters.
- * @ptr: Memory Location Of PTR Pointing To buf.
- * @length: That Is The size of buf PTR.
+ * @p: Memory Location Of PTR Pointing To buf.
+ * @len: That Is The size of buf PTR.
  *
  * Return: c.
  */
