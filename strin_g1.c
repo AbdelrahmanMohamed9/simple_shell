@@ -1,34 +1,28 @@
 #include "shell.h"
 
 /**
- *  _puts -  function that prints string, followed by a new line.
- *  @str: String to be printed.
+ * _strcpy - function copies string pointed to by src,
+ * including the terminating null byte to the buffer pointed to dest.
+ * @src: string to be copied
+ * @dest: new string
+ * Return: pointer to the destination string.
  */
 
-void _puts(char *str)
+char *_strcpy(char *dest, char *src)
 {
 	int i;
+	int len;
 
+	len = 0;
 	i = 0;
-	while (str[i])
-		_putchar(str[i++]);
-	_putchar('\n');
-}
-
-/**
- * _putchar - function prints single character
- * @c: character to bassed as a parameter to be printed
- * Return: 1 on success, and -1 on error.
- */
-int _putchar(char c)
-{
-	int ret;
-
-	ret = write(1, &c, 1);
-	if (ret == -1)
-		return (-1);
-
-	return (0);
+	while (src[len])
+		len++;
+	while (i <= len)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	return (dest);
 }
 
 /**
@@ -64,26 +58,39 @@ char *_strdup(const char *str)
 }
 
 /**
- * _strcpy - function copies string pointed to by src,
- * including the terminating null byte to the buffer pointed to dest.
- * @src: string to be copied
- * @dest: new string
- * Return: pointer to the destination string.
+ *  _puts -  function that prints string, followed by a new line.
+ *  @s: String to be printed.
  */
-
-char *_strcpy(char *dest, char *src)
+void _puts(char *s)
 {
-	int i;
-	int len;
+	int i = 0;
 
-	len = 0;
-	i = 0;
-	while (src[len])
-		len++;
-	while (i <= len)
+	if (!s)
+		return;
+	while (s[i] != '\0')
 	{
-		dest[i] = src[i];
+		_putchar(s[i]);
 		i++;
 	}
-	return (dest);
+}
+
+/**
+ * _putchar - function prints single character
+ * @ch: character to bassed as a parameter to be printed
+ * Return: 1 on success, and -1 on error.
+ */
+
+int _putchar(char ch)
+{
+	static int i;
+	static char buf[WRITE_BUF_SIZE];
+
+	if (ch == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	{
+		write(1, buf, i);
+		i = 0;
+	}
+	if (ch != BUF_FLUSH)
+		buf[i++] = ch;
+	return (1);
 }

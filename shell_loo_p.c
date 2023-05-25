@@ -144,7 +144,7 @@ int hsh(info_t *inf, char **av)
 
 	i = 0;
 	ret = 0;
-	prompt = BLUE BOLD "[posh]-" RESET RED BOLD "$ " RESET;
+	prompt = BLUE BOLD "[hsh]-" RESET RED BOLD "$ " RESET;
 
 	while (ret != -2 && i != -1)
 	{

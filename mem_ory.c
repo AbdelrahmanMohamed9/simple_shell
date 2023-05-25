@@ -10,7 +10,7 @@ int bfree(void **p)
 {
 	if (p && *p)
 	{
-		free(p);
+		free(*p);
 		*p = NULL;
 		return (1);
 	}

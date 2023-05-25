@@ -63,5 +63,3 @@ void ffree(char **str)
 		free(*str++);
 	free(s);
 }
-
-

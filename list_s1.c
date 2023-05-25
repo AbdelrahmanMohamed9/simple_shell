@@ -20,9 +20,8 @@ char **list_to_strings(list_t *h)
 	str = malloc(sizeof(char *) * (len + 1));
 	if (!str)
 		return (NULL);
-	while (new)
+	for (i = 0; new; new = new->next, i++)
 	{
-		new = new->next;
 		s = malloc(_strlen(new->str) + 1);
 		if (!s)
 		{
@@ -33,7 +32,6 @@ char **list_to_strings(list_t *h)
 		}
 		s = _strcpy(s, new->str);
 		str[i] = s;
-		i++;
 	}
 	str[i] = NULL;
 	return (str);
