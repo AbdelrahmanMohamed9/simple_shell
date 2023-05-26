@@ -14,10 +14,10 @@ char **strtow(char *s, char *c)
 
 	if (s == NULL || s[0] == 0)
 		return (NULL);
-	if (!d)
-		d = " ";
+	if (!c)
+		c = " ";
 	for (i = 0; s[i] != '\0'; i++)
-		if (!is_delim(s[i], c) && (is_delim(s[i + 1], d) || !s[i + 1]))
+		if (!is_delim(s[i], c) && (is_delim(s[i + 1], c) || !s[i + 1]))
 			count_words++;
 
 	if (count_words == 0)
@@ -36,8 +36,8 @@ char **strtow(char *s, char *c)
 		if (!tmp[j])
 		{
 			for (k = 0; k < j; k++)
-				free(s[k]);
-			free(s);
+				free(tmp[k]);
+			free(tmp);
 			return (NULL);
 		}
 		for (m = 0; m < k; m++)
@@ -68,7 +68,7 @@ char **strtow2(char *s, char c)
 			count_words++;
 	if (count_words == 0)
 		return (NULL);
-	tmo = malloc((1 + count_words) * sizeof(char *));
+	tmp = malloc((1 + count_words) * sizeof(char *));
 	if (!tmp)
 		return (NULL);
 	for (i = 0, j = 0; j < count_words; j++)
@@ -82,7 +82,7 @@ char **strtow2(char *s, char c)
 		if (!tmp[j])
 		{
 			for (k = 0; k < j; k++)
-				free(s[k]);
+				free(tmp[k]);
 			free(tmp);
 			return (NULL);
 		}

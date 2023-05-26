@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  * fork_cmd - function forks execution thread to un cmd
  * @inf: struct passed as a parametter
@@ -49,7 +51,7 @@ void fork_cmd(info_t *inf)
 int find_builtin(info_t *inf)
 {
 	int i, ret = -1;
-	builtin_table builtint_bl[] = {
+	builtin_t builtint_bl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
 		{"help", _myhelp},
@@ -78,7 +80,7 @@ int find_builtin(info_t *inf)
 
 void find_cmd(info_t *inf)
 {
-	char *_path = NULL;
+	char *path = NULL;
 	int i, j;
 
 	inf->path = inf->argv[0];

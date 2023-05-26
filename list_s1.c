@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  * list_to_strings - function returns array of strings
  * of list str

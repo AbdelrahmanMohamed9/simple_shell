@@ -1,3 +1,4 @@
+#include "shell.h"
 /**
  * is_chain - function checks if current char is chain delimeter
  * @inf: struct to be passed as a parametter.
@@ -22,7 +23,7 @@ int is_chain(info_t *inf, char *buffer, size_t *p)
 		i++;
 		inf->cmd_buf_type = CMD_AND;
 	}
-	else if (buffer[j] == ';')
+	else if (buffer[i] == ';')
 	{
 		buffer[i] = 0;
 		inf->cmd_buf_type = CMD_CHAIN;

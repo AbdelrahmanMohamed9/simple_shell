@@ -1,3 +1,5 @@
+#include "shell.h"
+
 /**
  * bfree - function frees a pointer.
  * @p: - pointer to be freed.
